@@ -34,11 +34,17 @@ bot.on("new_chat_members",ctx=>{
 
 
 bot.hears('💰 Buy',ctx=>{
-    ctx.reply("This is Buy")
+    fs.readFile('buy.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 bot.command('buy',ctx=>{
-    ctx.reply("This is Buy")
+    fs.readFile('buy.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 bot.hears('🌎 Website',ctx=>{
@@ -64,11 +70,17 @@ bot.command('website',ctx=>{
 })
 
 bot.hears('🚀 RoadMap',ctx=>{
-    ctx.reply("This is Roadmap")
+    fs.readFile('roadmap.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 bot.command('roadmap',ctx=>{
-    ctx.reply("This is Roadmap")
+    fs.readFile('roadmap.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 
@@ -87,11 +99,17 @@ bot.command('slippage',ctx=>{
 })
 
 bot.hears('📝 WhitePaper',ctx=>{
-    ctx.reply("This is WhitePaper")
+    fs.readFile('whitepaper.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 bot.command('whitepaper',ctx=>{
-    ctx.reply("This is WhitePaper")
+    fs.readFile('whitepaper.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 bot.hears('📜 Contract',ctx=>{
@@ -120,6 +138,60 @@ bot.hears(/setslippagemessage/gi,(ctx)=>{
         }
     });
 })
+
+
+bot.hears(/setbuymessage/gi,(ctx)=>{
+    const text = ctx.update.message.text
+    const finaltext = text.replace(/setbuymessage/gi,"")
+    const textForSaved = finaltext.trim()
+
+    fs.open('buy.txt', 'w', function (err, file) {
+        if (err) {
+            console.log(err)
+        } else {
+            fs.writeFile('buy.txt', textForSaved , function (err) {
+                if (err) throw err;
+                ctx.reply("Your message sucessfully set").catch("Something is wrong")
+            });  
+        }
+    });
+})
+
+
+bot.hears(/setroadmapmessage/gi,(ctx)=>{
+    const text = ctx.update.message.text
+    const finaltext = text.replace(/setroadmapmessage/gi,"")
+    const textForSaved = finaltext.trim()
+
+    fs.open('roadmap.txt', 'w', function (err, file) {
+        if (err) {
+            console.log(err)
+        } else {
+            fs.writeFile('roadmap.txt', textForSaved , function (err) {
+                if (err) throw err;
+                ctx.reply("Your message sucessfully set").catch("Something is wrong")
+            });  
+        }
+    });
+})
+
+bot.hears(/setwhitepapermessage/gi,(ctx)=>{
+    const text = ctx.update.message.text
+    const finaltext = text.replace(/setwhitepapermessage/gi,"")
+    const textForSaved = finaltext.trim()
+
+    fs.open('whitepaper.txt', 'w', function (err, file) {
+        if (err) {
+            console.log(err)
+        } else {
+            fs.writeFile('whitepaper.txt', textForSaved , function (err) {
+                if (err) throw err;
+                ctx.reply("Your message sucessfully set").catch("Something is wrong")
+            });  
+        }
+    });
+})
+
 
 
 
