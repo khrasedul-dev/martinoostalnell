@@ -17,7 +17,7 @@ bot.start(ctx=>{
     } ).catch("Somthing is wrong")
 })
 
-bot.on('new_chat_members',ctx=>{
+bot.on("new_chat_members",ctx=>{
     ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name  , {
         reply_markup: {
             keyboard: [
