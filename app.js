@@ -64,25 +64,33 @@ bot.command('tokenomics',ctx=>{
 
 
 bot.hears('🌎 Website',ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , `<b>What Do We Do?</b>\nWe want to blur the line between the cryptocurrency merchants and ordinary consumers. We will popularize the cryptocurrency by giving free admission, and by helping people understand and confide what we believe to be the future of money.` , {
-        reply_markup:{
-            inline_keyboard:[
-                [{text: "Visit our website", url: "https://gravitymetaverse.io"}]
-            ]
-        },
-        parse_mode: "HTML"
-    }).catch("Something is wrong")
+
+    fs.readFile('web.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest , {
+            reply_markup:{
+                inline_keyboard:[
+                    [{text: "Visit our website", url: "https://gravitymetaverse.io"}]
+                ]
+            },
+            parse_mode: "HTML"
+        }).catch("Something is wrong")
+    })
+
 })
 
 bot.command('website',ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , `<b>What Do We Do?</b>\nWe want to blur the line between the cryptocurrency merchants and ordinary consumers. We will popularize the cryptocurrency by giving free admission, and by helping people understand and confide what we believe to be the future of money.` , {
-        reply_markup:{
-            inline_keyboard:[
-                [{text: "Visit our website", url: "https://gravitymetaverse.io"}]
-            ]
-        },
-        parse_mode: "HTML"
-    }).catch("Something is wrong")
+    fs.readFile('web.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest , {
+            reply_markup:{
+                inline_keyboard:[
+                    [{text: "Visit our website", url: "https://gravitymetaverse.io"}]
+                ]
+            },
+            parse_mode: "HTML"
+        }).catch("Something is wrong")
+    })
 })
 
 bot.hears('🚀 RoadMap',ctx=>{
@@ -224,6 +232,24 @@ bot.hears(/settokenomicsmessage/gi,(ctx)=>{
         }
     });
 })
+
+bot.hears(/setwebsitemessage/gi,(ctx)=>{
+    const text = ctx.update.message.text
+    const finaltext = text.replace(/setwebsitemessage/gi,"")
+    const textForSaved = finaltext.trim()
+
+    fs.open('web.txt', 'w', function (err, file) {
+        if (err) {
+            console.log(err)
+        } else {
+            fs.writeFile('web.txt', textForSaved , function (err) {
+                if (err) throw err;
+                ctx.reply("Your message sucessfully set").catch("Something is wrong")
+            });  
+        }
+    });
+})
+
 
 
 
