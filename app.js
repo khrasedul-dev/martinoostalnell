@@ -7,37 +7,44 @@ bot.start(ctx=>{
     ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name  , {
         reply_markup: {
             keyboard: [
-                [{text: "📄 Slippage"}],
-                [{text: "💸 Price"},{text: "📃 Whitepaper"}],
-                [{text: "💹 Chart"},{text: "📖 RoadMap"}],
-                [{text: "☎ Contract"}]
+                [{text: "💰 Buy"}],
+                [{text: "🌎 Website"},{text: "🚀 RoadMap"}],
+                [{text: "💵 Slippage"},{text: "📝 WhitePaper"}],
+                [{text: "📜 Contract"}]
             ],
             resize_keyboard: true
         }
     } )
 })
 
-bot.hears('📄 Slippage',ctx=>{
-    ctx.reply("This is Slippage")
+bot.hears('💰 Buy',ctx=>{
+    ctx.reply("This is Buy")
 })
 
-bot.hears('💸 Price',ctx=>{
-    ctx.reply("This is Price")
+bot.hears('🌎 Website',ctx=>{
+    ctx.telegram.sendMessage(ctx.chat.id , `What Do We Do?\n
+    We want to blur the line between the cryptocurrency merchants and ordinary consumers. We will popularize the cryptocurrency by giving free admission, and by helping people understand and confide what we believe to be the future of money.` , {
+        reply_markup:{
+            inline_keyboard:[
+                [{text: "Visit our website", url: "https://gravitymetaverse.io"}]
+            ]
+        }
+    })
 })
 
-bot.hears('📃 Whitepaper',ctx=>{
-    ctx.reply("This is Whitepaper")
+bot.hears('🚀 RoadMap',ctx=>{
+    ctx.reply("This is Roadmap")
 })
 
-bot.hears('💹 Chart',ctx=>{
-    ctx.reply("This is chart")
+bot.hears('💵 Slippage',ctx=>{
+    ctx.reply("This is slippage")
 })
 
-bot.hears('📖 RoadMap',ctx=>{
-    ctx.reply("This is RoadMap")
+bot.hears('📝 WhitePaper',ctx=>{
+    ctx.reply("This is WhitePaper")
 })
 
-bot.hears('☎ Contract',ctx=>{
+bot.hears('📜 Contract',ctx=>{
     ctx.replyWithHTML(`<b>Contract Us:</b> \nWebsite: https://gravitymetaverse.io/\nInstagram: gravitymetaverse\nFacebook: Gravity Metaverse`)
 })
 
