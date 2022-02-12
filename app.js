@@ -28,7 +28,7 @@ bot.hears('🌎 Website',ctx=>{
                 [{text: "Visit our website", url: "https://gravitymetaverse.io"}]
             ]
         },
-        parse_mode: HTML
+        parse_mode: "HTML"
     })
 })
 
