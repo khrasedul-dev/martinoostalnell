@@ -73,14 +73,14 @@ bot.command('roadmap',ctx=>{
 
 
 bot.hears('💵 Slippage',ctx=>{
-    fs.readFile('db.txt',(err,data)=>{
+    fs.readFile('slippage.txt',(err,data)=>{
         const showTest = data.toString()
         ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
     })
 })
 
 bot.command('slippage',ctx=>{
-    fs.readFile('db.txt',(err,data)=>{
+    fs.readFile('slippage.txt',(err,data)=>{
         const showTest = data.toString()
         ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
     })
