@@ -1,3 +1,4 @@
+const fs = require('fs')
 const {Composer,Telegraf} = require('micro-bot')
 
 const bot = new Composer()
@@ -24,7 +25,7 @@ bot.on("new_chat_members",ctx=>{
                 [{text: "💰 Buy"}],
                 [{text: "🌎 Website"},{text: "🚀 RoadMap"}],
                 [{text: "💵 Slippage"},{text: "📝 WhitePaper"}],
-                [{text: "📜 Contract"}]
+                 [{text: "📜 Contract"}]
             ],
             resize_keyboard: true
         }
@@ -72,11 +73,17 @@ bot.command('roadmap',ctx=>{
 
 
 bot.hears('💵 Slippage',ctx=>{
-    ctx.reply("This is slippage")
+    fs.readFile('db.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 bot.command('slippage',ctx=>{
-    ctx.reply("This is slippage")
+    fs.readFile('db.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
 })
 
 bot.hears('📝 WhitePaper',ctx=>{
@@ -95,6 +102,24 @@ bot.command('contract',ctx=>{
     ctx.replyWithHTML(`<b>Contract Us:</b> \nWebsite: https://gravitymetaverse.io/\nInstagram: gravitymetaverse\nFacebook: Gravity Metaverse`).catch("Somthing is wrong")
 })
 
+
+
+bot.hears(/setslippagemessage/gi,(ctx)=>{
+    const text = ctx.update.message.text
+    const finaltext = text.replace("setslippagemessage","")
+    const textForSaved = finaltext.trim()
+
+    fs.open('db.txt', 'w', function (err, file) {
+        if (err) {
+            console.log(err)
+        } else {
+            fs.writeFile('db.txt', textForSaved , function (err) {
+                if (err) throw err;
+                ctx.reply("Your message sucessfully set").catch("Something is wrong")
+            });  
+        }
+    });
+})
 
 
 
