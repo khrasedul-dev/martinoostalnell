@@ -10,8 +10,8 @@ bot.start(ctx=>{
             keyboard: [
                 [{text: "💰 Buy"}],
                 [{text: "🌎 Website"},{text: "🚀 RoadMap"}],
-                [{text: "💵 Slippage"},{text: "📝 WhitePaper"}],
-                [{text: "📜 Contract"}]
+                [{text: "💵 Tax"},{text: "📝 WhitePaper"}],
+                [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
             resize_keyboard: true
         }
@@ -24,8 +24,8 @@ bot.on("new_chat_members",ctx=>{
             keyboard: [
                 [{text: "💰 Buy"}],
                 [{text: "🌎 Website"},{text: "🚀 RoadMap"}],
-                [{text: "💵 Slippage"},{text: "📝 WhitePaper"}],
-                 [{text: "📜 Contract"}]
+                [{text: "💵 Tax"},{text: "📝 WhitePaper"}],
+                [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
             resize_keyboard: true
         }
@@ -46,6 +46,22 @@ bot.command('buy',ctx=>{
         ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
     })
 })
+
+
+bot.hears('⚙️ Tokenomics',ctx=>{
+    fs.readFile('tm.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
+})
+
+bot.command('tokenomics',ctx=>{
+    fs.readFile('tm.txt',(err,data)=>{
+        const showTest = data.toString()
+        ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
+    })
+})
+
 
 bot.hears('🌎 Website',ctx=>{
     ctx.telegram.sendMessage(ctx.chat.id , `<b>What Do We Do?</b>\nWe want to blur the line between the cryptocurrency merchants and ordinary consumers. We will popularize the cryptocurrency by giving free admission, and by helping people understand and confide what we believe to be the future of money.` , {
@@ -84,14 +100,14 @@ bot.command('roadmap',ctx=>{
 })
 
 
-bot.hears('💵 Slippage',ctx=>{
+bot.hears('💵 Tax',ctx=>{
     fs.readFile('slippage.txt',(err,data)=>{
         const showTest = data.toString()
         ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
     })
 })
 
-bot.command('slippage',ctx=>{
+bot.command('tax',ctx=>{
     fs.readFile('slippage.txt',(err,data)=>{
         const showTest = data.toString()
         ctx.telegram.sendMessage(ctx.chat.id , showTest ).catch('Something is wrong')
@@ -122,9 +138,9 @@ bot.command('contract',ctx=>{
 
 
 
-bot.hears(/setslippagemessage/gi,(ctx)=>{
+bot.hears(/settaxmessage/gi,(ctx)=>{
     const text = ctx.update.message.text
-    const finaltext = text.replace(/setslippagemessage/gi,"")
+    const finaltext = text.replace(/settaxmessage/gi,"")
     const textForSaved = finaltext.trim()
 
     fs.open('slippage.txt', 'w', function (err, file) {
@@ -192,6 +208,22 @@ bot.hears(/setwhitepapermessage/gi,(ctx)=>{
     });
 })
 
+bot.hears(/settokenomicsmessage/gi,(ctx)=>{
+    const text = ctx.update.message.text
+    const finaltext = text.replace(/Settokenomicsmessage/gi,"")
+    const textForSaved = finaltext.trim()
+
+    fs.open('tm.txt', 'w', function (err, file) {
+        if (err) {
+            console.log(err)
+        } else {
+            fs.writeFile('tm.txt', textForSaved , function (err) {
+                if (err) throw err;
+                ctx.reply("Your message sucessfully set").catch("Something is wrong")
+            });  
+        }
+    });
+})
 
 
 
