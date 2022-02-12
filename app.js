@@ -22,8 +22,7 @@ bot.hears('💰 Buy',ctx=>{
 })
 
 bot.hears('🌎 Website',ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , `What Do We Do?\n
-    We want to blur the line between the cryptocurrency merchants and ordinary consumers. We will popularize the cryptocurrency by giving free admission, and by helping people understand and confide what we believe to be the future of money.` , {
+    ctx.telegram.sendMessage(ctx.chat.id , `What Do We Do?\nWe want to blur the line between the cryptocurrency merchants and ordinary consumers. We will popularize the cryptocurrency by giving free admission, and by helping people understand and confide what we believe to be the future of money.` , {
         reply_markup:{
             inline_keyboard:[
                 [{text: "Visit our website", url: "https://gravitymetaverse.io"}]
