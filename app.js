@@ -106,14 +106,14 @@ bot.command('contract',ctx=>{
 
 bot.hears(/setslippagemessage/gi,(ctx)=>{
     const text = ctx.update.message.text
-    const finaltext = text.replace("setslippagemessage","")
+    const finaltext = text.replace(/setslippagemessage/gi,"")
     const textForSaved = finaltext.trim()
 
-    fs.open('db.txt', 'w', function (err, file) {
+    fs.open('slippage.txt', 'w', function (err, file) {
         if (err) {
             console.log(err)
         } else {
-            fs.writeFile('db.txt', textForSaved , function (err) {
+            fs.writeFile('slippage.txt', textForSaved , function (err) {
                 if (err) throw err;
                 ctx.reply("Your message sucessfully set").catch("Something is wrong")
             });  
