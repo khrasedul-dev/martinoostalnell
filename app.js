@@ -14,7 +14,7 @@ bot.start(ctx=>{
             ],
             resize_keyboard: true
         }
-    } )
+    } ).catch("Somthing is wrong")
 })
 
 bot.hears('💰 Buy',ctx=>{
@@ -29,7 +29,7 @@ bot.hears('🌎 Website',ctx=>{
             ]
         },
         parse_mode: "HTML"
-    })
+    }).catch("Something is wrong")
 })
 
 bot.hears('🚀 RoadMap',ctx=>{
@@ -45,7 +45,7 @@ bot.hears('📝 WhitePaper',ctx=>{
 })
 
 bot.hears('📜 Contract',ctx=>{
-    ctx.replyWithHTML(`<b>Contract Us:</b> \nWebsite: https://gravitymetaverse.io/\nInstagram: gravitymetaverse\nFacebook: Gravity Metaverse`)
+    ctx.replyWithHTML(`<b>Contract Us:</b> \nWebsite: https://gravitymetaverse.io/\nInstagram: gravitymetaverse\nFacebook: Gravity Metaverse`).catch("Somthing is wrong")
 })
 
 
