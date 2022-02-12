@@ -17,6 +17,21 @@ bot.start(ctx=>{
     } ).catch("Somthing is wrong")
 })
 
+bot.on('new_chat_members',ctx=>{
+    ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name  , {
+        reply_markup: {
+            keyboard: [
+                [{text: "💰 Buy"}],
+                [{text: "🌎 Website"},{text: "🚀 RoadMap"}],
+                [{text: "💵 Slippage"},{text: "📝 WhitePaper"}],
+                [{text: "📜 Contract"}]
+            ],
+            resize_keyboard: true
+        }
+    } ).catch("Somthing is wrong")
+})
+
+
 bot.hears('💰 Buy',ctx=>{
     ctx.reply("This is Buy")
 })
