@@ -15,7 +15,7 @@ bot.start(ctx=>{
                 [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
             resize_keyboard: true,
-force_reply:false
+force_reply:true
         }
     } ).catch("Somthing is wrong")
 })
@@ -31,7 +31,7 @@ bot.on("new_chat_members",ctx=>{
                 [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
             resize_keyboard: true,
-force_reply:false
+force_reply:true
         }
     } ).catch("Somthing is wrong")
 })
