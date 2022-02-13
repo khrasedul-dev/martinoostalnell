@@ -20,22 +20,6 @@ bot.start(ctx=>{
     } ).catch("Somthing is wrong")
 })
 
-bot.on("new_chat_members",ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name+`\nWelcome in Gravity Metaverse!
-
-🚀Are you ready to go to the moon?🚀`  , {
-        reply_markup: {
-            keyboard: [
-                [{text: "💰 Buy"}],
-                [{text: "🌎 Website"},{text: "🚀 RoadMap"}],
-                [{text: "💵 Tax"},{text: "📝 WhitePaper"}],
-                [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
-            ],
-            resize_keyboard: true
-        }
-    } ).catch("Somthing is wrong")
-})
-
 
 bot.hears('💰 Buy',ctx=>{
     fs.readFile('buy.txt',(err,data)=>{
