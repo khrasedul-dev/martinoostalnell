@@ -5,7 +5,8 @@ const bot = new Composer()
 
 
 bot.start(ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "Gravity bot started"  , {
+    ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name+`\nWelcome in Gravity Metaverse!
+🚀Are you ready to go to the moon?🚀`  , {
         reply_markup: {
             keyboard: [
                 [{text: "💰 Buy"}],
@@ -19,8 +20,7 @@ bot.start(ctx=>{
 })
 
 bot.on("new_chat_members",ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name+`\nWelcome in Gravity Metaverse!
-🚀Are you ready to go to the moon?🚀`  , {
+    ctx.telegram.sendMessage(ctx.chat.id , "." , {
         reply_markup: {
             keyboard: [
                 [{text: "💰 Buy"}],
