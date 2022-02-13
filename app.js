@@ -14,9 +14,9 @@ bot.start(ctx=>{
                 [{text: "💵 Tax"},{text: "📝 WhitePaper"}],
                 [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
-            resize_keyboard: true,
-force_reply:true
-        }
+            resize_keyboard: true
+        },
+allow_sending_without_reply:true
     } ).catch("Somthing is wrong")
 })
 
@@ -30,9 +30,9 @@ bot.on("new_chat_members",ctx=>{
                 [{text: "💵 Tax"},{text: "📝 WhitePaper"}],
                 [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
-            resize_keyboard: true,
-force_reply:true
-        }
+            resize_keyboard: true
+        },
+allow_sending_without_reply:true
     } ).catch("Somthing is wrong")
 })
 
