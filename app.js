@@ -5,7 +5,8 @@ const bot = new Composer()
 
 
 bot.start(ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "----------------------"  , {
+    ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name+`\nWelcome in Gravity Metaverse!
+🚀Are you ready to go to the moon?🚀`  , {
         reply_markup: {
             keyboard: [
                 [{text: "💰 Buy"}],
@@ -13,13 +14,15 @@ bot.start(ctx=>{
                 [{text: "💵 Tax"},{text: "📝 WhitePaper"}],
                 [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
-            resize_keyboard: true
+            resize_keyboard: true,
+force_reply:false
         }
     } ).catch("Somthing is wrong")
 })
 
 bot.on("new_chat_members",ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "----------------------" , {
+    ctx.telegram.sendMessage(ctx.chat.id , "Hello "+ctx.from.first_name+`\nWelcome in Gravity Metaverse!
+🚀Are you ready to go to the moon?🚀` , {
         reply_markup: {
             keyboard: [
                 [{text: "💰 Buy"}],
@@ -27,7 +30,8 @@ bot.on("new_chat_members",ctx=>{
                 [{text: "💵 Tax"},{text: "📝 WhitePaper"}],
                 [{text: "⚙️ Tokenomics"},{text: "📜 Contract"}]
             ],
-            resize_keyboard: true
+            resize_keyboard: true,
+force_reply:false
         }
     } ).catch("Somthing is wrong")
 })
