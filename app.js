@@ -15,8 +15,10 @@ bot.start(ctx=>{
             ],
             resize_keyboard: true
         }
-    } ).catch("Somthing is wrong")
+    } ).catch("Somthing is wrong").then(()=>{
 ctx.deleteMessage()
+})
+
 })
 
 bot.on("new_chat_members",ctx=>{
@@ -30,7 +32,7 @@ bot.on("new_chat_members",ctx=>{
             ],
             resize_keyboard: true
         }
-    } ).catch("Somthing is wrong")
+    } ).catch("Somthing is wrong").then(()=>{
 ctx.deleteMessage()
 })
 
