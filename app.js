@@ -5,7 +5,7 @@ const bot = new Composer()
 
 
 bot.start(ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "````````````````````````````"  , {
+    ctx.telegram.sendMessage(ctx.chat.id , "------------------"  , {
         reply_markup: {
             keyboard: [
                 [{text: "💰 Buy"}],
@@ -15,14 +15,11 @@ bot.start(ctx=>{
             ],
             resize_keyboard: true
         }
-    } ).catch("Somthing is wrong").then(()=>{
-ctx.deleteMessage()
-})
-
+    } ).catch("Somthing is wrong")
 })
 
 bot.on("new_chat_members",ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "````````````````````````````" , {
+    ctx.telegram.sendMessage(ctx.chat.id , "------------------" , {
         reply_markup: {
             keyboard: [
                 [{text: "💰 Buy"}],
@@ -32,8 +29,7 @@ bot.on("new_chat_members",ctx=>{
             ],
             resize_keyboard: true
         }
-    } ).catch("Somthing is wrong").then(()=>{
-ctx.deleteMessage()
+    } ).catch("Somthing is wrong")
 })
 
 
