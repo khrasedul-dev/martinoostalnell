@@ -20,7 +20,7 @@ bot.start(ctx=>{
 })
 
 bot.on("new_chat_members",ctx=>{
-    ctx.telegram.sendMessage(ctx.chat.id , "." , {
+    ctx.telegram.sendMessage(ctx.chat.id , "⠀" , {
         reply_markup: {
             keyboard: [
                 [{text: "💰 Buy"}],
